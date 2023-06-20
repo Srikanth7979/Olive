@@ -46,8 +46,9 @@ button:hover{
 
 input:nth-child(4){
     position: absolute;
+    width: fit-content;
     top: 12.3rem;
-    right: -200px;
+    left: 700px;
 }
 
 }
@@ -111,7 +112,7 @@ input:nth-child(4){
         input:nth-child(6){
             position: absolute;
             top: 21.7rem;
-            right: -160px;
+            left: 380px;
         }
     }
 }
@@ -129,7 +130,8 @@ input:nth-child(4){
         input:nth-child(4){
             position: absolute;
             top: 10rem;
-            right: -140px;
+            left: 340px;
         } 
+
     }
 }

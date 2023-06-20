@@ -8,7 +8,7 @@ import { useState, useEffect, useRef } from "react";
 export default function Signin() {
 
     const [error, setError] = useState('');
-    const [email, setemail] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
@@ -20,6 +20,12 @@ export default function Signin() {
         setShowPassword(!showPassword);
     }
 
+    const handleEmailChange = (e: any) => {
+        setEmail(e.target.value);
+    };
+
+    // const handle
+
     const ref = useRef(null);
     useEffect(() => {
 
@@ -28,12 +34,12 @@ export default function Signin() {
     return (
         <main className={style.Main}>
             <div className={styles.description}>
-                <p>
+                <a href='https://oliveweb3.vercel.com'>
                     Get started
-                </p>
+                </a>
                 <div>
                     <a
-                        href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+                        href="https://oliveweb3.vercel.app"
                         target="_blank"
                         rel="noopener noreferrer"
                     >

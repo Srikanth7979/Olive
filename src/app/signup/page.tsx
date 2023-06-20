@@ -10,7 +10,7 @@ import { useState, useEffect, useRef } from "react";
 export default function Signup() {
 
     const [error, setError] = useState('');
-    const [email, setemail] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [firstName, setFirstname] = useState('');
     const [lastName, setLastname] = useState('');
@@ -18,6 +18,18 @@ export default function Signup() {
 
     const handlePasswordChange = (e: any) => {
         setPassword(e.target.value);
+    };
+
+    const handleEmailChange = (e: any) => {
+        setEmail(e.target.value);
+    };
+
+    const handleFirstnameChange = (e: any) => {
+        setFirstname(e.target.value);
+    };
+
+    const handleLastnameChange = (e: any) => {
+        setLastname(e.target.value);
     };
 
     const handleTogglePassword = () => {
