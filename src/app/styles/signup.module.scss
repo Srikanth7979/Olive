@@ -1,0 +1,135 @@
+.Main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+}
+
+.formDiv{
+position: relative;
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(5.1px);
+border: .5px solid rgba(220, 220, 220, 0.63);
+padding: 5rem;
+margin-top: var(--main-size);
+display: grid;
+grid-gap: 20px;
+background-color: rgba(21, 20, 20, 0.584);
+
+input, button{
+    font-family: var(--font-mono);  
+    width: 650px;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+    background: transparent;
+    transition: border .5s ease-out;
+}
+
+button{
+    color: white;
+    background-color: rgb(38, 35, 38);
+    cursor: pointer;
+    opacity: 1;
+}
+
+button:hover{
+    border: solid rgb(226, 129, 226) 1px;
+    transition: border .5s ease-out;
+}
+
+input:nth-child(6){
+    position: absolute;
+    top: 21.7rem;
+    right: -200px;
+}
+
+}
+
+.anchor{
+    position: relative;
+    font-family: var(--font-mono);
+    text-align: center;
+    font-size: 20px;
+    top: 3rem;
+}
+
+.center{
+    background-color: transparent;
+    width: 500px;
+    height: 500px;
+    // position: absolute;
+    pointer-events: none;
+}
+
+.center::before {
+    background: var(--secondary-glow);
+    border-radius: 50%;
+    width: 480px;
+    height: 360px;
+    margin-left: -400px;
+  }
+  
+  .center::after {
+    background: var(--primary-glow);
+    width: 240px;
+    height: 180px;
+    z-index: -1;
+  }
+  
+  .center::before,
+  .center::after {
+    content: '';
+    left: 50%;
+    position: absolute;
+    filter: blur(45px);
+    transform: translateZ(0);
+  }
+
+.fun{
+    position: absolute;
+}
+
+
+
+
+
+  /* Mobile */
+@media (max-width: 700px) {
+    .formDiv{
+        padding: 5rem 1rem;
+        input, button{
+            width: 400px;
+            font-size: 20px;
+        }
+
+        input:nth-child(6){
+            position: absolute;
+            top: 21.7rem;
+            right: -160px;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+   
+    .formDiv{
+        
+        input, button{
+            width: 350px;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        input:nth-child(6){
+            position: absolute;
+            top: 16.3rem;
+            right: -140px;
+        } 
+    }
+}

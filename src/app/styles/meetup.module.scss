@@ -1,0 +1,116 @@
+.anchor {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    margin: 64px 32px;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 3fr));
+    grid-template-rows: auto;
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+    width: 100%;
+    height: 100%;
+    // margin: 0 128px;
+
+    div {
+        font-family: var(--font-mono);
+        padding: 10px;
+        border-radius: 5px 20px;
+        background-color: rgba(var(--callout-rgb), 0.5);
+        border: 1px dashed rgba(var(--callout-border-rgb), 0.3);
+
+        p:nth-child(2){
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+    }
+}
+
+.imageDiv1 {
+    background: url('../../../public/person1.png');
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 16px;
+}
+
+.imageDiv2 {
+    background: url('../../../public/person2.png');
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 16px;
+    // background-position-x: -180px;
+}
+
+.imageDiv3{
+    background: url('../../../public/person3.jpg');
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 16px; 
+}
+
+.imageDiv4{
+    background: url('../../../public/person4.jpg');
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 16px;
+}
+
+.imageDiv6{
+    background: url('../../../public/person5.png');
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 16px; 
+}
+
+.imageDiv5{
+    background: url('../../../public/person6.png');
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 16px; 
+}
+
+
+
+
+
+
+
+/****** MOBILE VIEW *******/
+
+@media (max-width: 500px){
+    .anchor{
+       
+    }
+
+    .grid{
+        position: relative;
+        left: -60px;
+    
+        div {
+            p:nth-child(2){
+                font-size: 22px;
+            }
+        }
+    }
+}
