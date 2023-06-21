@@ -52,7 +52,7 @@ export default function Signin() {
             }).then((res) => {
 
                 if (res.status == 200) {
-                    console.log(res.data);
+                    // console.log(res.data);
                     const expirationTime2 = 60 * 5 * 1000;
                     const expirationTimestamp2 = new Date().getTime() + expirationTime2;
                     const expirationDate2 = new Date(expirationTimestamp2);
@@ -63,7 +63,7 @@ export default function Signin() {
 
             })
                 .catch((err) => {
-                    console.log(err);
+                    // console.log(err);
                     router.push('/signin');
                 });
 
@@ -87,8 +87,8 @@ export default function Signin() {
 
             if (res.status == 200) {
                 console.log(res.data.refreshToken, res.data.accessToken);
-                const expirationTime = 7 * 24 * 60 * 60 * 1000; 
-                const expirationTime2 = 60 * 5 * 1000; 
+                const expirationTime = 7 * 24 * 60 * 60 * 1000;
+                const expirationTime2 = 60 * 5 * 1000;
                 const expirationTimestamp2 = new Date().getTime() + expirationTime2;
                 const expirationDate2 = new Date(expirationTimestamp2);
 
@@ -97,16 +97,19 @@ export default function Signin() {
                 // localStorage.setItem('tokenExpiration', expirationTime.toString());
 
                 // Store the refreshtoken and its expiration date in cookies
-                Cookies.set('userAccess_TT', res.data.refreshToken,  { expires: expirationDate2 });
-                
-                router.push('/meetup');
-                }
+                Cookies.set('userAccess_TT', res.data.refreshToken, { expires: expirationDate2 });
 
-            })
+                router.push('/meetup');
+            }
+
+        })
             .catch((err) => {
                 console.log(err);
-                setLoading(false);
                 setError(err.response.data.message);
+                setTimeout(() => {
+                    setError('');
+                }, 3500);
+
             });
 
     };
@@ -139,7 +142,7 @@ export default function Signin() {
             <div>
                 <p className={style.anchor}>Sign in with Olive</p>
                 <form className={style.formDiv} method='post'>
-                    <div className="emailerror">{error}</div>
+                    <div className={style.error}>{error}</div>
                     <input required type='email' id='email' name='email' onChange={handleEmailChange} placeholder='email' />
                     <input required type={showPassword ? "text" : "password"} onChange={handlePasswordChange} id="pswrd" name="pswrd" pattern="[a-z0-9]{1,15}" placeholder='password' />
                     <input

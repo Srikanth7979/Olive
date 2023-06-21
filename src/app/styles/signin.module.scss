@@ -47,7 +47,7 @@ button:hover{
 input:nth-child(4){
     position: absolute;
     width: fit-content;
-    top: 12.3rem;
+    top: 11.2rem;
     left: 700px;
 }
 
@@ -95,7 +95,12 @@ input:nth-child(4){
     top: 3rem;
 }
 
-
+.error{
+    color: red;
+    font-family: var(--font-mono);
+    position: absolute;
+    padding: 3rem 5rem;
+}
 
 
 
@@ -109,9 +114,9 @@ input:nth-child(4){
             font-size: 20px;
         }
 
-        input:nth-child(6){
+        input:nth-child(4){
             position: absolute;
-            top: 21.7rem;
+            top: 8.7rem;
             left: 380px;
         }
     }
@@ -129,8 +134,9 @@ input:nth-child(4){
 
         input:nth-child(4){
             position: absolute;
-            top: 10rem;
+            top: 8.7rem;
             left: 340px;
+
         } 
 
     }

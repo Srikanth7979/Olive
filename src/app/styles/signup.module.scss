@@ -97,7 +97,12 @@
     position: absolute;
 }
 
-
+.error{
+    color: red;
+    font-family: var(--font-mono);
+    position: absolute;
+    padding: 3rem 5rem;
+}
 
 
 

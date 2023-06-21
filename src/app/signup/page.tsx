@@ -76,6 +76,10 @@ export default function Signup() {
                 console.log(err.response.data.message);
                 setLoading(false);
                 setError(err.response.data.message);
+                setTimeout(() => {
+                    setError('');
+                }, 3500);
+
             });
 
     };
@@ -142,7 +146,7 @@ export default function Signup() {
             <div>
                 <p className={style.anchor}>Sign up with Olive</p>
                 <form className={style.formDiv}>
-                    <div className="emailerror">{error}</div>
+                    <div className={style.error}>{error}</div>
                     <input onChange={handleFirstnameChange} type="text" id="fname" name="name" required placeholder='firstname' />
                     <input onChange={handleLastnameChange} type="text" id="lname" name="name" required placeholder='secondname' />
                     <input onChange={handleEmailChange} required type='email' id='email' name='email' placeholder='email' />
@@ -155,8 +159,6 @@ export default function Signup() {
                     />
                     <button onClick={handleSignup} disabled={loading} type="submit">Submit</button>
                 </form>
-
-                <p>{error}</p>
             </div>
 
             <div className={style.center}></div>
