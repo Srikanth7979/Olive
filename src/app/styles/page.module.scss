@@ -25,7 +25,7 @@
   gap: 0.5rem;
 }
 
-.description a {
+.description p, .description a {
   position: relative;
   margin: 0;
   padding: 1rem;
@@ -36,7 +36,7 @@
   transition: border .5s ease-out;
 }
 
-.description a:hover{
+.description p:hover, .description a:hover{
   border: solid rgb(226, 129, 226) 1px;
   transition: border .5s ease-out;
 }
@@ -167,9 +167,11 @@
     font-size: 0.8rem;
   }
 
-  .description a {
+  .description a:not(a:first) {
     padding: 1rem;
   }
+
+
 
   .description p,
   .description div {

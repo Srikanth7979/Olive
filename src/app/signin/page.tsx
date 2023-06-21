@@ -4,6 +4,11 @@ import Image from 'next/image'
 import style from '../styles/signin.module.scss'
 import styles from '../styles/page.module.scss'
 import { useState, useEffect, useRef } from "react";
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie'
+
+
 
 export default function Signin() {
 
@@ -11,6 +16,9 @@ export default function Signin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const router = useRouter();
 
     const handlePasswordChange = (e: any) => {
         setPassword(e.target.value);
@@ -24,22 +32,95 @@ export default function Signin() {
         setEmail(e.target.value);
     };
 
-    // const handle
+    const datum = {
+        email: email,
+        password: password,
+    }
 
-    const ref = useRef(null);
-    useEffect(() => {
+    const dataP = JSON.stringify(datum)
 
-    }, [])
+    const handleAuth = async () => {
+        const accesstoken = localStorage.getItem('token');
+        const refreshtoken = Cookies.get('userAccess_TT');
+
+        if (accesstoken && refreshtoken || accesstoken && !refreshtoken) {
+            // console.log(accesstoken);
+            axios.get('https://oliveweb3.cyclic.app/user/verify', {
+                headers: {
+                    'Authorization': `Bearer ${accesstoken}`
+                }
+            }).then((res) => {
+
+                if (res.status == 200) {
+                    console.log(res.data);
+                    const expirationTime2 = 60 * 5 * 1000;
+                    const expirationTimestamp2 = new Date().getTime() + expirationTime2;
+                    const expirationDate2 = new Date(expirationTimestamp2);
+
+                    Cookies.set('userAccess_TT', res.data, { expires: expirationDate2 });
+                    router.push('/meetup');
+                }
+
+            })
+                .catch((err) => {
+                    console.log(err);
+                    router.push('/signin');
+                });
+
+        } else if (!accesstoken && !refreshtoken) {
+            router.push('/signin');
+        }
+    }
+
+    const handleSignin = async (e: any) => {
+        e.preventDefault();
+
+        setLoading(true);
+        console.log(loading);
+
+        axios.post('https://oliveweb3.cyclic.app/user/signin', dataP, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then((res) => {
+            setLoading(false);
+
+            if (res.status == 200) {
+                console.log(res.data.refreshToken, res.data.accessToken);
+                const expirationTime = 7 * 24 * 60 * 60 * 1000; 
+                const expirationTime2 = 60 * 5 * 1000; 
+                const expirationTimestamp2 = new Date().getTime() + expirationTime2;
+                const expirationDate2 = new Date(expirationTimestamp2);
+
+                // Store the accesstoken and its expiration date in local storage
+                localStorage.setItem('token', res.data.accessToken);
+                // localStorage.setItem('tokenExpiration', expirationTime.toString());
+
+                // Store the refreshtoken and its expiration date in cookies
+                Cookies.set('userAccess_TT', res.data.refreshToken,  { expires: expirationDate2 });
+                
+                router.push('/meetup');
+                }
+
+            })
+            .catch((err) => {
+                console.log(err);
+                setLoading(false);
+                setError(err.response.data.message);
+            });
+
+    };
+
 
     return (
         <main className={style.Main}>
             <div className={styles.description}>
-                <a href='https://oliveweb3.vercel.com'>
+                <p onClick={handleAuth}>
                     Get started
-                </a>
+                </p>
                 <div>
                     <a
-                        href="https://oliveweb3.vercel.app"
+                        href="/"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -59,15 +140,15 @@ export default function Signin() {
                 <p className={style.anchor}>Sign in with Olive</p>
                 <form className={style.formDiv} method='post'>
                     <div className="emailerror">{error}</div>
-                    <input required type='email' id='email' name='email' placeholder='email' />
-                    <input required type={showPassword ? "text" : "password"} id="pswrd" name="pswrd" pattern="[a-z0-9]{1,15}" placeholder='password' />
+                    <input required type='email' id='email' name='email' onChange={handleEmailChange} placeholder='email' />
+                    <input required type={showPassword ? "text" : "password"} onChange={handlePasswordChange} id="pswrd" name="pswrd" pattern="[a-z0-9]{1,15}" placeholder='password' />
                     <input
                         id='showP'
                         type="checkbox"
                         checked={showPassword}
                         onChange={handleTogglePassword}
                     />
-                    <button type="submit">Submit</button>
+                    <button onClick={handleSignin} type="submit">Submit</button>
                 </form>
             </div>
 
