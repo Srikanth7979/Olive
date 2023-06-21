@@ -123,6 +123,13 @@ input:nth-child(4){
 }
 
 @media (max-width: 550px) {
+    .error{
+        color: red;
+        font-family: var(--font-mono);
+        position: absolute;
+        padding: 3rem 1rem;
+        width: 100%;
+    }
    
     .formDiv{
         

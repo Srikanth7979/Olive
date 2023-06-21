@@ -73,9 +73,15 @@ export default function Signup() {
 
         })
             .catch((err) => {
-                console.log(err.response.data.message);
+                console.log(err.response.data);
                 setLoading(false);
-                setError(err.response.data.message);
+
+                if(err.response.data.statusCode == 400){
+                    setError('Please fill out the fields appropraitely.')
+                }else{
+                    setError(err.response.data.message);
+                }
+                
                 setTimeout(() => {
                     setError('');
                 }, 3500);
