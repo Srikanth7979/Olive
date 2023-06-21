@@ -6,25 +6,13 @@ import styles from '../styles/page.module.scss';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie'
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 
 export default function Meet() {
 
 
     const router = useRouter();
-
-    // const handleAuth = async () => {
-    //     const accesstoken = localStorage.getItem('token');
-    //     const refreshtoken = Cookies.get('userAccess_TT');
-
-    //     if(accesstoken && refreshtoken){
-    //         router.push('/meetup');
-    //     }else if(accesstoken){
-    //         router.push('/');
-    //     }
-    //     router.push('/signin');
-    // }
 
     useEffect(() => {
         const handleAuth = async () => {

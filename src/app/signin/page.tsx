@@ -3,12 +3,19 @@
 import Image from 'next/image'
 import style from '../styles/signin.module.scss'
 import styles from '../styles/page.module.scss'
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, CSSProperties } from "react";
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+import DotLoader from "react-spinners/DotLoader";
 
-
+const override: CSSProperties = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "purple",
+    position: 'absolute',
+    top: 400,
+};
 
 export default function Signin() {
 
@@ -105,7 +112,13 @@ export default function Signin() {
         })
             .catch((err) => {
                 console.log(err);
-                setError(err.response.data.message);
+                setLoading(false)
+                if(err.response.data.statusCode == 400){
+                    setError('Please fill out the fields appropraitely.')
+                }else{
+                    setError(err.response.data.message);
+                }
+                
                 setTimeout(() => {
                     setError('');
                 }, 3500);
@@ -153,7 +166,16 @@ export default function Signin() {
                     />
                     <button onClick={handleSignin} type="submit">Submit</button>
                 </form>
+                <p className={style.alt}>Have an account? <a href='signup'>Sign up</a></p>
             </div>
+            <DotLoader
+                color='#e281e2'
+                loading={loading}
+                cssOverride={override}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
 
             <div className={style.center}></div>
         </main>

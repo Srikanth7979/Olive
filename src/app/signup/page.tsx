@@ -3,12 +3,19 @@
 import style from '../styles/signup.module.scss'
 import styles from '../styles/page.module.scss'
 import Image from 'next/image';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, CSSProperties } from "react";
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie'
-import { BeatLoader, BarLoader, CircleLoader } from 'react-spinners';
+import DotLoader from "react-spinners/DotLoader";
 
+const override: CSSProperties = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "purple",
+    position: 'absolute',
+    top: 400,
+};
 
 
 
@@ -165,7 +172,17 @@ export default function Signup() {
                     />
                     <button onClick={handleSignup} disabled={loading} type="submit">Submit</button>
                 </form>
+                <p className={style.alt}>Have an account? <a href='/signin'>login</a></p>
             </div>
+
+            <DotLoader
+                color='#e281e2'
+                loading={loading}
+                cssOverride={override}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
 
             <div className={style.center}></div>
         </main>

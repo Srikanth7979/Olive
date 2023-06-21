@@ -40,14 +40,14 @@
     }
 
     button:hover {
-        border: solid rgb(226, 129, 226) 1px;
+        border: solid #e281e2 1px;
         transition: border .5s ease-out;
     }
 
     input:nth-child(6) {
         width: fit-content;
         position: absolute;
-        top: 350px;
+        top: 330px;
         left: 700px;
     }
 
@@ -123,6 +123,26 @@
             top: 20.4rem;
             left: 380px;
         }
+    }
+}
+
+.alt{
+    font-family: var(--font-mono);
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+
+    a{
+        margin-left: 10px;
+        color: rgb(223, 88, 223);
+        cursor: pointer;
+        padding-bottom: 5px;
+    }
+
+    a:hover{
+        border-bottom: solid 2px  rgb(223, 88, 223);
+        padding-bottom: 5px;
+        transition: border-bottom .5s ease-in, padding-bottom .5s ease-in;
     }
 }
 
