@@ -96,10 +96,10 @@ input:nth-child(4){
 }
 
 .error{
-    color: red;
+    color: rgb(222, 108, 108);
     font-family: var(--font-mono);
     position: absolute;
-    padding: 1rem 5rem;
+    padding: 3rem 5rem;
 }
 
 .alt{
@@ -145,11 +145,12 @@ input:nth-child(4){
 
 @media (max-width: 550px) {
     .error{
-        color: red;
+        color: rgb(222, 108, 108);
         font-family: var(--font-mono);
         position: absolute;
         padding: 3rem 1rem;
         width: 100%;
+        font-size: 12px;
     }
    
     .formDiv{
