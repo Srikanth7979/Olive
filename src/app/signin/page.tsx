@@ -72,6 +72,8 @@ export default function Signin() {
                 .catch((err) => {
                     // console.log(err);
                     router.push('/signin');
+                    throw new Error('Erorr:', err)
+                    
                 });
 
         } else if (!accesstoken && !refreshtoken) {
@@ -114,7 +116,7 @@ export default function Signin() {
                 console.log(err);
                 setLoading(false)
                 if(err.response.data.statusCode == 400){
-                    setError('Please fill out the fields appropraitely.')
+                    setError('Please fill out the fields appropriately.')
                 }else{
                     setError(err.response.data.message);
                 }
