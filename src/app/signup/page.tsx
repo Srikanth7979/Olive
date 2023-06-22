@@ -74,13 +74,13 @@ export default function Signup() {
             setLoading(false);
 
             if (res.status == 201) {
-                console.log(res);
+                // console.log(res);
                 router.push('/signin');
             }
 
         })
             .catch((err) => {
-                console.log(err.response.data);
+                // console.log(err.response.data);
                 setLoading(false);
 
                 if(err.response.data.statusCode == 400){
@@ -111,7 +111,7 @@ export default function Signup() {
             }).then((res) => {
 
                 if (res.status == 200) {
-                    console.log(res.data);
+                    // console.log(res.data);
                     const expirationTime2 = 60 * 5 * 1000;
                     const expirationTimestamp2 = new Date().getTime() + expirationTime2;
                     const expirationDate2 = new Date(expirationTimestamp2);
@@ -122,7 +122,7 @@ export default function Signup() {
 
             })
                 .catch((err) => {
-                    console.log(err);
+                    // console.log(err);
                     router.push('/signin');
                 });
 

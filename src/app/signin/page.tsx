@@ -85,7 +85,7 @@ export default function Signin() {
         e.preventDefault();
 
         setLoading(true);
-        console.log(loading);
+        // console.log(loading);
 
         axios.post('https://oliveweb3.cyclic.app/user/signin', dataP, {
             headers: {
@@ -95,7 +95,7 @@ export default function Signin() {
             setLoading(false);
 
             if (res.status == 200) {
-                console.log(res.data.refreshToken, res.data.accessToken);
+                // console.log(res.data.refreshToken, res.data.accessToken);
                 const expirationTime = 7 * 24 * 60 * 60 * 1000;
                 const expirationTime2 = 60 * 5 * 1000;
                 const expirationTimestamp2 = new Date().getTime() + expirationTime2;
@@ -113,7 +113,7 @@ export default function Signin() {
 
         })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 setLoading(false)
                 if(err.response.data.statusCode == 400){
                     setError('Please fill out the fields appropriately.')

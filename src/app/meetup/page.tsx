@@ -39,7 +39,7 @@ export default function Meet() {
 
                 })
                     .catch((err) => {
-                        console.log(err);
+                        // console.log(err);
                         router.push('/signin');
                     });
 
