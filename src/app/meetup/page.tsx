@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie'
 import { useEffect } from "react";
 
+const url = "https://oliveweb3.cyclic.cloud";
 
 export default function Meet() {
 
@@ -21,7 +22,7 @@ export default function Meet() {
 
             if (accesstoken && refreshtoken || accesstoken && !refreshtoken) {
                 // console.log(accesstoken);
-                axios.get('https://oliveweb3.cyclic.app/user/verify', {
+                axios.get(`${url}/user/verify`, {
                     headers: {
                         'Authorization': `Bearer ${accesstoken}`
                     }

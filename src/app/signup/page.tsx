@@ -9,6 +9,8 @@ import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie'
 import DotLoader from "react-spinners/DotLoader";
 
+const url = "https://oliveweb3.cyclic.cloud";
+
 const override: CSSProperties = {
     display: "block",
     margin: "0 auto",
@@ -66,7 +68,7 @@ export default function Signup() {
         setLoading(true);
         console.log(loading);
 
-        axios.post('https://oliveweb3.cyclic.app/user/signup', dataP, {
+        axios.post(`${url}/user/signup`, dataP, {
             headers: {
                 'Content-Type': 'application/json',
             }
@@ -104,7 +106,7 @@ export default function Signup() {
 
         if (accesstoken && refreshtoken || accesstoken && !refreshtoken) {
             // console.log(accesstoken);
-            axios.get('https://oliveweb3.cyclic.app/user/verify', {
+            axios.get(`${url}/user/verify`, {
                 headers: {
                     'Authorization': `Bearer ${accesstoken}`
                 }
